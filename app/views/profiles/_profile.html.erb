@@ -1,0 +1,29 @@
+<div id="<%= dom_id profile %>">
+  <p>
+    <strong>Name:</strong>
+    <%= profile.name %>
+  </p>
+
+  <p>
+  
+    <strong>Instagram:</strong>
+    <%= link_to profile.instagram, "https://www.instagram.com/#{profile.instagram}" %>  </p>
+  
+  <p>
+  <strong>Linkedin:</strong>
+  <%= link_to profile.linkedin, profile.linkedin %>  
+  </p>
+
+  <p>
+    <strong>X:</strong>
+  <%= link_to profile.X, "https://twitter.com/#{profile.X}" %>  </p>
+  </p>
+
+  <p>
+    <strong >Github:</strong>
+    <%= link_to profile.outro, "https://github.com/#{profile.outro}" %>
+  </p>
+
+
+
+</div>
