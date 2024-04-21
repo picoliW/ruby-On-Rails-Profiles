@@ -57,6 +57,14 @@ class ProfilesController < ApplicationController
     end
   end
 
+  # Método para ação de pesquisa de perfil
+  def search
+    @search_term = params[:search]
+    @profiles = Profile.where("name LIKE ?", "%#{@search_term}%")
+    # Após a pesquisa, redirecione para a página de resultados
+    redirect_to search_profiles_url(search: @search_term)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
