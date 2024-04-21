@@ -8,4 +8,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "profiles#index"
+<<<<<<< HEAD
+=======
+  get '/profiles/search', to: 'profiles#search', as: 'search_profiles'
+>>>>>>> searchbar
 end

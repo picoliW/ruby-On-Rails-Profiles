@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1>Editing profile</h1>
 
 <%= render "form", profile: @profile %>
@@ -8,3 +9,23 @@
   <%= link_to "Show this profile", @profile %> |
   <%= link_to "Back to profiles", profiles_path %>
 </div>
+=======
+<% if @search_term.present? %>
+  <h1>Resultados da busca por "<%= @search_term %>"</h1>
+<% end %>
+
+<% if @profiles.any? %>
+  <ul>
+    <% @profiles.each do |profile| %>
+      <li><%= profile.name %></li>
+      <!-- Adicione mais informações do perfil conforme necessário -->
+    <% end %>
+  </ul>
+<% else %>
+  <% if @search_term.present? %>
+    <p>Nenhum perfil encontrado para "<%= @search_term %>".</p>
+  <% else %>
+    <p>Nenhum perfil encontrado.</p>
+  <% end %>
+<% end %>
+>>>>>>> searchbar
