@@ -2,9 +2,12 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: %i[ show edit update destroy ]
 
   # GET /profiles or /profiles.json
-  def index
-    @profiles = Profile.all
-  end
+# GET /profiles or /profiles.json
+def index
+  @profiles = params[:search].present? ? Profile.where("name LIKE ?", "%#{params[:search]}%") : Profile.all
+  @search_term = params[:search]
+end
+
 
   # GET /profiles/1 or /profiles/1.json
   def show
@@ -58,12 +61,14 @@ class ProfilesController < ApplicationController
   end
 
   # Método para ação de pesquisa de perfil
-  def search
-    @search_term = params[:search]
-    @profiles = Profile.where("name LIKE ?", "%#{@search_term}%")
-    # Após a pesquisa, redirecione para a página de resultados
-    redirect_to search_profiles_url(search: @search_term)
-  end
+# Método para ação de pesquisa de perfil
+def search
+  @search_term = params[:search]
+  @profiles = Profile.where("name LIKE ?", "%#{@search_term}%")
+  render :index
+end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
